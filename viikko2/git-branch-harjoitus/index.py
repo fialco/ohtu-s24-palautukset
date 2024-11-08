@@ -12,7 +12,7 @@ print(f"{x} - {y} = {erotus(x, y)}")
 print(f"{x} * {y} = {tulo(x, y)}") 
 
 logger("lopetetaan ohjelma")
-print("goodbye!")
+print("hyvästit!")
 
 
 
