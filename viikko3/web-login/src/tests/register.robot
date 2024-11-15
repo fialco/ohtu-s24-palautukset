@@ -49,14 +49,40 @@ Register With Username That Is Already In Use
     Submit Credentials
     Registration Should Fail With Message  User with username kalle already exists 
 
+Login After Successful Registration
+    Registration with valid credentials
+    Registration Should Succeed
+    Click Link  Continue to main page
+    Click Button  Logout
+    Set Username  makkis
+    Set Password  M4kk!5P3kk!5
+    Click Button  Login
+    Login Should Succeed
+
+Login After Failed Registration
+    Registration with invalid credentials
+    Registration Should Fail With Message  Username should be at least 3 characters
+    Click Link  Login
+    Set Username  ma
+    Set Password  M4
+    Click Button  Login
+    Login Should Fail With Message  Invalid username or password
 
 *** Keywords ***
 Registration Should Succeed
     Welcome Page Should Be Open
 
+Login Should Succeed
+    Main Page Should Be Open
+
 Registration Should Fail With Message
     [Arguments]  ${message}
     Register Page Should Be Open
+    Page Should Contain  ${message}
+
+Login Should Fail With Message
+    [Arguments]  ${message}
+    Login Page Should Be Open
     Page Should Contain  ${message}
 
 Submit Credentials
@@ -73,6 +99,19 @@ Set Password
 Set Password Confirmation
     [Arguments]  ${password_confirmation}
     Input Password  password_confirmation  ${password_confirmation}
+
+Registration with valid credentials
+    Set Username  makkis
+    Set Password  M4kk!5P3kk!5
+    Set Password Confirmation  M4kk!5P3kk!5
+    Submit Credentials
+    Registration Should Succeed
+
+Registration with invalid credentials
+    Set Username  ma
+    Set Password  M4
+    Set Password Confirmation  M4kk
+    Submit Credentials
 
 *** Keywords ***
 Reset Application Create User And Go To Register Page
