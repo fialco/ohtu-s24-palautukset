@@ -36,8 +36,6 @@ class TestKauppa(unittest.TestCase):
         self.varasto_mock.saldo.side_effect = varasto_saldo
         self.varasto_mock.hae_tuote.side_effect = varasto_hae_tuote
 
-
-
     def test_ostoksen_paaytyttya_pankin_metodia_tilisiirto_kutsutaan(self):
         pankki_mock = Mock()
         viitegeneraattori_mock = Mock()
@@ -74,7 +72,6 @@ class TestKauppa(unittest.TestCase):
         # toistaiseksi ei välitetä kutsuun liittyvistä argumenteista
 
     def test_kutsutaan_pankin_metodia_tilinsiirto_oikeilla_argumenteilla(self):
-
 
         # tehdään ostokset
         self.kauppa.aloita_asiointi()
