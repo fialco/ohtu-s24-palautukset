@@ -3,14 +3,11 @@ from repositories.user_repository import (
     user_repository as default_user_repository
 )
 
-
 class UserInputError(Exception):
     pass
 
-
 class AuthenticationError(Exception):
     pass
-
 
 class UserService:
     def __init__(self, user_repository=default_user_repository):
