@@ -31,9 +31,6 @@ class HasAtLeast:
 
 # Ex 2
 class All:
-    def __init__(self, *matchers):
-        self._matchers = matchers
-
     def test(self, player):
         return True
 
@@ -59,3 +56,15 @@ class HasFewerThan:
         player_value = getattr(player, self._attr)
 
         return player_value < self._value
+
+#Ex 3
+class Or:
+    def __init__(self, *matchers):
+        self._matchers = matchers
+
+    def test(self, player):
+        for matcher in self._matchers:
+            if matcher.test(player):
+                return True
+
+        return False
